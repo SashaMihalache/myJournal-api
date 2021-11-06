@@ -21,7 +21,8 @@
     "nodemon": "^2.0.14"
   },
   "scripts": {
-    "start": "NODE_ENV=production nodemon app.js",
+    "start": "NODE_ENV=production node app.js",
+    "dev": "export NODE_ENV=development && nodemon --ignore 'tmp/*' app.js && exit 0",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo"

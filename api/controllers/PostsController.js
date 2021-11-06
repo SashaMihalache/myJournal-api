@@ -15,7 +15,7 @@ module.exports = {
 
     try {
       const newPost = await Post.create({ title, body }).fetch();
-      res.send(newPost);
+      res.redirect("/home");
     } catch (err) {
       return res.serverError(err.toString());
     }

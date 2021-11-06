@@ -1,0 +1,47 @@
+<html>
+  <style>
+    .post-container {
+      background-color: white;
+      margin: 16px;
+      padding: 16px;
+      border-radius: 5px;
+      border: solid 1px rgb(199, 199, 199);
+    }
+  </style>
+
+  <script>
+    async function handleDeletePost(postId) {
+      console.log("deleteing", postId);
+
+      if (window.confirm(`Are you sure you want to delete this post?`)) {
+        try {
+          await fetch(`/api/posts/${postId}`, { method: "DELETE" });
+          location.reload();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
+  </script>
+
+  <body style="background-color: rgb(235, 235, 235)">
+    This will show a list of our posts
+
+    <form class="post-container" action="/api/posts" method="POST">
+      <div>Create Post</div>
+      <input type="text" placeholder="Post Title" name="title" />
+      <input type="text" placeholder="Post Body" name="body" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <div>
+      <% posts.forEach(p => { %>
+      <div class="post-container">
+        <div><%= p.title %></div>
+        <div><%= p.body %></div>
+        <button onclick="handleDeletePost('<%= p.id %>')">Delete</button>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>

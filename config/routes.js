@@ -19,14 +19,16 @@ module.exports.routes = {
    ***************************************************************************/
 
   "/": { view: "pages/homepage" },
-  "GET /posts": {
+  "GET /api/posts": {
     controller: "PostsController",
     action: "posts",
   },
-  "GET /posts/:postId": "PostsController.findById",
-  "POST /posts": "PostsController.create",
-  "PUT /posts/:postId": "PostsController.update",
-  "DELETE /posts/:postId": "PostsController.delete",
+  "GET /api/posts/:postId": "PostsController.findById",
+  "POST /api/posts": "PostsController.create",
+  "PUT /api/posts/:postId": "PostsController.update",
+  "DELETE /api/posts/:postId": "PostsController.delete",
+
+  "GET /home": "post/home",
 
   /***************************************************************************
    *                                                                          *
