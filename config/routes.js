@@ -19,7 +19,14 @@ module.exports.routes = {
    ***************************************************************************/
 
   "/": { view: "pages/homepage" },
-  "/posts": "PostsController.posts",
+  "GET /posts": {
+    controller: "PostsController",
+    action: "posts",
+  },
+  "GET /posts/:postId": "PostsController.findById",
+  "POST /posts": "PostsController.create",
+  "PUT /posts/:postId": "PostsController.update",
+  "DELETE /posts/:postId": "PostsController.delete",
 
   /***************************************************************************
    *                                                                          *
